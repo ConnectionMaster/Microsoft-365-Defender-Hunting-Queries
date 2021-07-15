@@ -1,8 +1,12 @@
-# < Insert query name >
-< Provide query description and usage tips >
+# HTA startup persistence
+
+Use this query to locate persistence in Startup with HTA files.
+
 ## Query
 ```
-< Insert query string here >
+DeviceFileEvents
+| where FolderPath contains @"\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"
+| where FileName endswith ".hta"
 ```
 ## Category
 This query can be used to detect the following attack techniques and tactics ([see MITRE ATT&CK framework](https://attack.mitre.org/)) or security configuration states.
@@ -24,11 +28,8 @@ This query can be used to detect the following attack techniques and tactics ([s
 | Exploit |  |  |
 | Misconfiguration |  |  |
 | Malware, component |  |  |
-| Ransomware |  |  |
+| Ransomware |V |  |
 
 
 ## Contributor info
-**Contributor:** < your name >
-**GitHub alias:** < your github alias >
-**Organization:** < your org >
-**Contact info:** < email or website >
+**Contributor:** Microsoft 365 Defender

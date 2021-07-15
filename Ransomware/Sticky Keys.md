@@ -1,8 +1,11 @@
-# < Insert query name >
-< Provide query description and usage tips >
+# Sticky Keys
+
+A technique used in numerous ransomware attacks is a Sticky Keys hijack for privilege escalation/persistence. Surface realted alerts with this query.
+
 ## Query
 ```
-< Insert query string here >
+// Checks for possible hijacking of Sticky Keys feature 
+AlertInfo | where Title == "Sticky Keys binary hijack detected"
 ```
 ## Category
 This query can be used to detect the following attack techniques and tactics ([see MITRE ATT&CK framework](https://attack.mitre.org/)) or security configuration states.
@@ -24,11 +27,8 @@ This query can be used to detect the following attack techniques and tactics ([s
 | Exploit |  |  |
 | Misconfiguration |  |  |
 | Malware, component |  |  |
-| Ransomware |  |  |
+| Ransomware |V |  |
 
 
 ## Contributor info
-**Contributor:** < your name >
-**GitHub alias:** < your github alias >
-**Organization:** < your org >
-**Contact info:** < email or website >
+**Contributor:** Microsoft 365 Defender

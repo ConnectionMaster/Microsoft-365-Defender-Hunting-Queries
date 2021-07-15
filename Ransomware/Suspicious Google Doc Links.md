@@ -1,14 +1,22 @@
-# < Insert query name >
-< Provide query description and usage tips >
+# Suspicious Google Doc Links
+
+Use this query to find emails with message IDs that resemble IDs used in known attack emails and contain a link a document in Google Docs. These behaviors have
+been observed leading to ransomware attacks.
+
 ## Query
 ```
-< Insert query string here >
+EmailUrlInfo 
+| where Url startswith "https://docs.google.com/document/" 
+| join (EmailEvents 
+| where EmailDirection == "Inbound" 
+| where InternetMessageId matches regex "\\<\\w{ 38,42} \\@") on NetworkMessageId 
+
 ```
 ## Category
 This query can be used to detect the following attack techniques and tactics ([see MITRE ATT&CK framework](https://attack.mitre.org/)) or security configuration states.
 | Technique, tactic, or state | Covered? (v=yes) | Notes |
 |------------------------|----------|-------|
-| Initial access |  |  |
+| Initial access |V  |  |
 | Execution |  |  |
 | Persistence |  |  | 
 | Privilege escalation |  |  |
@@ -24,11 +32,8 @@ This query can be used to detect the following attack techniques and tactics ([s
 | Exploit |  |  |
 | Misconfiguration |  |  |
 | Malware, component |  |  |
-| Ransomware |  |  |
+| Ransomware |V |  |
 
 
 ## Contributor info
-**Contributor:** < your name >
-**GitHub alias:** < your github alias >
-**Organization:** < your org >
-**Contact info:** < email or website >
+**Contributor:** Microsoft 365 Defender

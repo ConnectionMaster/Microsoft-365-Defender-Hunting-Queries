@@ -1,8 +1,12 @@
-# < Insert query name >
-< Provide query description and usage tips >
+# DarkSide
+
+Use this query to look for running DarkSide ransomware behavior in the environment
+
 ## Query
 ```
-< Insert query string here >
+DeviceProcessEvents 
+| where FileName =~ "rundll32.exe" | where ProcessCommandLine matches regex @".dll,#(?:1|3) worker[0-9]\sjob[0-9]-[0-9]{4,}"
+
 ```
 ## Category
 This query can be used to detect the following attack techniques and tactics ([see MITRE ATT&CK framework](https://attack.mitre.org/)) or security configuration states.
@@ -24,11 +28,8 @@ This query can be used to detect the following attack techniques and tactics ([s
 | Exploit |  |  |
 | Misconfiguration |  |  |
 | Malware, component |  |  |
-| Ransomware |  |  |
+| Ransomware |V |  |
 
 
 ## Contributor info
-**Contributor:** < your name >
-**GitHub alias:** < your github alias >
-**Organization:** < your org >
-**Contact info:** < email or website >
+**Contributor:** Microsoft 365 Defender

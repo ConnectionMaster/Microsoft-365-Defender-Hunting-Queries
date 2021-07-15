@@ -1,8 +1,13 @@
-# < Insert query name >
-< Provide query description and usage tips >
+# File Backup Deletion Alerts
+
+This query checks alerts related to file backup deletion and enriches with additional alert evidence information
+
 ## Query
 ```
-< Insert query string here >
+AlertInfo
+| where Title == "File backups were deleted"
+| join AlertEvidence on $left.AlertId == $right.AlertId
+
 ```
 ## Category
 This query can be used to detect the following attack techniques and tactics ([see MITRE ATT&CK framework](https://attack.mitre.org/)) or security configuration states.
@@ -24,11 +29,8 @@ This query can be used to detect the following attack techniques and tactics ([s
 | Exploit |  |  |
 | Misconfiguration |  |  |
 | Malware, component |  |  |
-| Ransomware |  |  |
+| Ransomware |V |  |
 
 
 ## Contributor info
-**Contributor:** < your name >
-**GitHub alias:** < your github alias >
-**Organization:** < your org >
-**Contact info:** < email or website >
+**Contributor:** Microsoft 365 Defender
